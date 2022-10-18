@@ -1,0 +1,12 @@
+$maincolor: white;
+$textcolor: black;
+
+.page-footer {
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: $maincolor;
+    color: $textcolor;
+    text-align: center;
+}
