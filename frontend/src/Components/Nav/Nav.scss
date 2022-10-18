@@ -1,0 +1,17 @@
+// Variables
+$maincolor: white;
+$textcolor: black;
+
+nav {
+    background-color: $maincolor;
+}
+
+nav a {
+    color: $textcolor;
+    font-weight: 700;
+}
+
+nav ul a {
+    color: $textcolor;
+    font-weight: 700;
+}
