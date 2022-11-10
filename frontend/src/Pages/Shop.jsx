@@ -1,34 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import ShopListings from '../Components/ShopListings/ShopListings.jsx'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Shop = () => {
-    const [allListings, setAllListings] = useState(null)
-
-    const URL = "http://localhost:4000/listings"
-
-    // define function that makes API call to GET all listings
-    const getListings = async () => {
-        const response = await fetch(URL)
-        // console.log(response)
-
-        // convert data to json to properly read it
-        const data = await response.json()
-        // console.log(data)
-
-        setAllListings(data)
+const Shop = ({ listings }) => {
+    // loaded : loading
+    const loaded = () => {
+        return listings.map((listing) => (
+            <div className="listing">
+                <Link to={`/shop/${listing._id}`}>
+                    <img src={listing.image} alt={listing.image} />
+                    <p>
+                        {listing.name}
+                        Size: {listing.size}
+                    </p>
+                    <p>
+                        ${listing.price}
+                    </p>
+                </Link>
+            </div >
+        ))
     }
 
-    useEffect(() => {
-        getListings()
-    }, [])
+    const loading = () => {
+        return <h1>Loading...</h1>
+    }
 
-    return (
-        <div>
-            <ShopListings
-                allListings={allListings}
-            />
-        </div>
-    )
+    return listings ? loaded() : loading()
 }
 
 export default Shop

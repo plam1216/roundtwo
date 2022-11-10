@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import NewListing from '../Components/NewListing/NewListing.jsx'
 
-const Sell = () => {
-  // useState since listing information is changing as user fills out the form
-  const [listing, setListing] = useState({
+const Sell = ({ createListing }) => {
+  const [formData, setFormData] = useState({
     name: "",
     size: "",
     price: 0,
@@ -11,24 +10,10 @@ const Sell = () => {
     image: "",
   })
 
-  // URL where we are making API calls
-  const URL = 'http://localhost:4000/listings'
-
-  // define function that uses API call to create listings
-  const createListing = async (listingForm) => {
-    await fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json"
-      },
-      body: JSON.stringify(listingForm)
-    })
-  }
-
   // as information is entered into form, 'listing' state is updated'
   // '...' spread operator to apply changes to each key:value pair
   const handleChange = (event) => {
-    setListing({ ...listing, [event.target.name]: event.target.value })
+    setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
   const handleSubmit = (event) => {
@@ -36,10 +21,10 @@ const Sell = () => {
     event.preventDefault()
 
     // call 'createListing' passing in the now updated 'listing' state
-    createListing(listing)
+    createListing(formData)
 
     // reset listing
-    setListing({
+    setFormData({
       name: "",
       size: "",
       price: 0,
