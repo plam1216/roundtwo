@@ -10,9 +10,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const morgan = require('morgan')
 
-const session = require('express-session')
-const userController = require('./controllers/users.js')
-const listingController = require('./controllers/listings.js')
+// const session = require('express-session')
+const listingsController = require('./controllers/listings.js')
 
 const PORT = process.env.PORT || 4000
 
@@ -22,14 +21,13 @@ const PORT = process.env.PORT || 4000
 app.use(cors()) // to prevent cors errors, allows access to all origins
 app.use(morgan('dev')) // logging
 app.use(express.json()) // parse json bodies
-app.use(session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-}));
+// app.use(session({
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+// }));
 
-app.use('/user', userController) // adds user controller
-app.use('/listing', listingController) // adds listing controller
+app.use('/listings', listingsController) // adds listing controller
 
 ///////////////////////
 // DATABASE CONNECTION
