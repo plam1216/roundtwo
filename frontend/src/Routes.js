@@ -6,9 +6,10 @@ import { onAuthStateChanged } from 'firebase/auth'
 import Nav from './Components/Nav/Nav.jsx'
 
 import Home from './Pages/Home.jsx'
-import Shop from './Pages/Shop.jsx'
-import ListingDetails from './Pages/ListingDetails.jsx'
+import Shop from './Pages/Shop/Shop.jsx'
 import Sell from './Pages/Sell.jsx'
+import ListingDetails from './Pages/ListingDetails.jsx'
+import EditListing from './Pages/EditListing.jsx'
 
 const Routes = () => {
     const [listings, setListings] = useState(null)
@@ -43,6 +44,26 @@ const Routes = () => {
         getListings()
     }
 
+    const deleteListing = async (id) => {
+        await fetch(URL + id, {
+            method: "DELETE"
+        })
+
+        getListings()
+    }
+
+    const updateListing = async (listing, id) => {
+        await fetch(URL + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            body: JSON.stringify(listing)
+        })
+
+        getListings()
+    }
+
     useEffect(() => {
         getListings()
 
@@ -74,6 +95,18 @@ const Routes = () => {
                     path='/shop/:id'
                     render={(rp) => (
                         <ListingDetails
+                            deleteListing={deleteListing}
+                            listings={listings}
+                            {...rp}
+                        />
+                    )}
+                >
+                </Route>
+                <Route
+                    path='/edit/:id'
+                    render={(rp) => (
+                        <EditListing
+                            updateListing={updateListing}
                             listings={listings}
                             {...rp}
                         />
