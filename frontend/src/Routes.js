@@ -12,8 +12,28 @@ import ListingDetails from './Pages/ListingDetails.jsx'
 import EditListing from './Pages/EditListing.jsx'
 
 const Routes = () => {
+    // hold all listings
     const [listings, setListings] = useState(null)
+
+    // state for updated listings
+    const [filteredListings, setFilteredListings] = useState(listings)
+    // console.log("listings", listings)
+    // console.log("filtered", filteredListings)
+    
     const [user, setUser] = useState(null)
+
+    const onFilterSelected = (filterSize) => {
+        // console.log(filterSize)
+        if (filterSize === "All") {
+            setFilteredListings(listings)
+        } else {
+            let filter = listings.filter(listing => {
+                return listing.size === filterSize
+            })
+            // console.log("filter", filter)
+            setFilteredListings(filter)
+        }
+    }
 
     const URL = "http://localhost:4000/listings/"
 
@@ -26,6 +46,7 @@ const Routes = () => {
         // console.log(data)
 
         setListings(prev => data)
+        setFilteredListings(prev => data)
     }
 
     // define function that uses API call to create listings
@@ -88,7 +109,8 @@ const Routes = () => {
                 </Route>
                 <Route exact path='/shop'>
                     <Shop
-                        listings={listings}
+                        listings={filteredListings}
+                        onFilterSelected={onFilterSelected}
                     />
                 </Route>
                 <Route
