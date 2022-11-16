@@ -1,0 +1,26 @@
+.detail-img {
+    width: 240px;
+    height: 320px;
+    object-fit: contain;
+    // border: 2px solid black;
+}
+
+
+.detail-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detail-size {
+    font-weight: 700;
+}
+
+.detail-price {
+    font-weight: 700;
+}
