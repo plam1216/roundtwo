@@ -2,46 +2,69 @@ import React from 'react'
 
 const Listing = ({ handleChange, handleSubmit }) => {
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input
-          type="text"
-          name="name"
-          onChange={handleChange}
-        />
+      <div className="col-md-4 offset-md-4">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Name</label>
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              onChange={handleChange}
+            />
+          </div>
 
-        <label>Size</label>
-        <input
-          type="text"
-          name="size"
-          onChange={handleChange}
-        />
+          <div className="mb-3">
+            <label className="form-label">Size</label>
+            <input
+              className="form-control"
+              type="text"
+              name="size"
+              onChange={handleChange}
+            />
+          </div>
 
-        <label>Price</label>
-        <input
-          type="number"
-          name="price"
-          onChange={handleChange}
-        />
+          <div className="mb-3">
+            <label className="form-label">Price</label>
+            <input
+              className="form-control"
+              type="number"
+              name="price"
+              onChange={handleChange}
+            />
+          </div>
 
-        <label>Description</label>
-        <input
-          type="text"
-          name="description"
-          onChange={handleChange}
-        />
-        
-        <label>Image</label>
-        <input
-          type="text"
-          name="image"
-          onChange={handleChange}
-        />
+          <div className="mb-3">
+            <label className="form-label">Description</label>
+            <textarea
+              className="form-control"
+              // type="text"
+              rows="3"
+              name="description"
+              onChange={handleChange}
+            />
+          </div>
 
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
+          <div className="mb-3">
+            <label className="form-label">Image</label>
+            <input
+              className="form-control"
+              type="text"
+              name="image"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="pt-2 pb-4 text-center">
+            <button
+              className="btn btn-secondary"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
   )
 }
 
