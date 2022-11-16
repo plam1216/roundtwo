@@ -1,0 +1,41 @@
+.shop-img {
+    width: 240px;
+    height: 320px;
+    object-fit: contain;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.listing {
+    width: 240px;
+    margin: auto;
+}
+
+.listing-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listing-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listing-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+}
+
+.listing-price {
+    font-weight: 500;
+}
+
+.text {
+    width: 160px;
+}
