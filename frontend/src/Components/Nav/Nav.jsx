@@ -5,7 +5,9 @@ import { login, logout } from '../../services/firebase'
 const Nav = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg">
-      <div className="container-fluid justify-content-end">
+      <div className="container-fluid">
+        <Link id="roundtwo-logo" to='/'>RoundTwo</Link>
+
         <button
           className="navbar-toggler"
           type="button"

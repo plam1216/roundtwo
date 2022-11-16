@@ -1,17 +1,17 @@
-// Variables
-$maincolor: white;
-$textcolor: black;
-
 nav {
-    background-color: $maincolor;
+    color: black;
+    font-weight: 600;
 }
 
-nav a {
-    color: $textcolor;
-    font-weight: 700;
+#roundtwo-logo {
+    text-decoration: underline;
 }
 
-nav ul a {
-    color: $textcolor;
-    font-weight: 700;
+#user-pic {
+    height: 40px;
+    width: 40px;
+}
+
+#navbarNav {
+    justify-content: end;
 }
