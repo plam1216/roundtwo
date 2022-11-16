@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ListingDetails = (props, { user }) => {
-    // console.log(props)
+const ListingDetails = (props) => {
+    // console.log(props.user)
 
     const loaded = () => {
         const id = props.match.params.id
@@ -35,7 +35,7 @@ const ListingDetails = (props, { user }) => {
                 </p>
                 <p>{listing.description}</p>
 
-                {user ?
+                {props.user ?
                     <>
                         <Link className="btn btn-primary" to={`/edit/${id}`}>Edit</Link>
                         <button className="btn btn-primary" onClick={removeListing}>Delete</button>
