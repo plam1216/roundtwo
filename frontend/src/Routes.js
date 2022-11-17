@@ -5,11 +5,11 @@ import { onAuthStateChanged } from 'firebase/auth'
 
 import Nav from './Components/Nav/Nav.jsx'
 
-import Home from './Pages/Home.jsx'
+import Home from './Pages/Home/Home.jsx'
 import Shop from './Pages/Shop/Shop.jsx'
-import Sell from './Pages/Sell.jsx'
-import ListingDetails from './Pages/ListingDetails.jsx'
-import EditListing from './Pages/EditListing.jsx'
+import Sell from './Pages/Sell/Sell.jsx'
+import ListingDetails from './Pages/ListingDetails/ListingDetails.jsx'
+import EditListing from './Pages/EditListing/EditListing.jsx'
 
 const Routes = () => {
     // hold all listings
@@ -19,7 +19,7 @@ const Routes = () => {
     const [filteredListings, setFilteredListings] = useState(listings)
     // console.log("listings", listings)
     // console.log("filtered", filteredListings)
-    
+
     const [user, setUser] = useState(null)
 
     const onFilterSelected = (filterSize) => {
@@ -102,7 +102,9 @@ const Routes = () => {
 
     return (
         <>
-            <Nav user={user} />
+            <Nav
+                user={user}
+            />
             <Switch>
                 <Route exact path='/'>
                     <Home />
@@ -117,6 +119,7 @@ const Routes = () => {
                     path='/shop/:id'
                     render={(rp) => (
                         <ListingDetails
+                            user={user}
                             deleteListing={deleteListing}
                             listings={listings}
                             {...rp}
