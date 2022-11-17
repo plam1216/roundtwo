@@ -1,0 +1,12 @@
+@import '../src/Components/Nav/Nav.scss';
+@import '../src/Components/Footer/Footer.scss';
+@import '../src/Components/Filter/Filter.scss';
+@import '../src/Pages/Home/Home.scss';
+@import '../src/Pages/Shop/Shop.scss';
+@import '../src/Pages/ListingDetails/ListingDetails.scss';
+
+html,
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+}
