@@ -24,40 +24,59 @@ const ListingDetails = (props) => {
         }
 
         let listingDetails =
-            <div className="col">
-                <div className="listing">
-                    <img
-                        className="detail-img"
-                        src={listing.image}
-                        alt={listing.image}
-                    />
-
-                    <div className="listing-details" style={{ fontWeight: 700 }}>
-                        <div className="listing-name">
-                            {listing.name}
+            <div className="row">
+                <div className="col">
+                    <div className="detail-listing">
+                        <div className="img-div">
+                            <img
+                                className="detail-img"
+                                src={listing.image}
+                                alt={listing.image}
+                            />
                         </div>
-                        <div className="listing-size">
-                            {listing.size}
+
+                        <div className="detail-info fw-bold">
+                            <div className="detail-name">
+                                {listing.name}
+                            </div>
+                            <div className="detail-size">
+                                {listing.size}
+                            </div>
                         </div>
+
+                        <div className="detail-description">
+                            {listing.description}
+                        </div>
+
+                        <div className="detail-price">
+                            ${listing.price}
+                        </div>
+
+                        {/* <div className="mt-4 mb-0 fw-bold">
+                            Seller:
+                        </div>
+
+                        <div className="seller-info">
+                            <div>
+                                {props.user.displayName}
+                                <br />
+                                {props.user.email}
+                            </div>
+                            <div>
+                                <img src={props.user.photoURL} alt="user-pfp" />
+                            </div>
+                        </div> */}
                     </div>
 
-                    <div className="listing-description">
-                        {listing.description}
-                    </div>
-
-                    <div className="listing-price">
-                        ${listing.price}
-                    </div>
+                    {props.user ?
+                        <div className="text-center mt-4">
+                            <Link className="btn btn-secondary m-3" to={`/edit/${id}`}>Edit</Link>
+                            <button className="btn btn-secondary" onClick={removeListing}>Delete</button>
+                        </div>
+                        :
+                        null
+                    }
                 </div>
-
-                {props.user ?
-                    <div className="text-center">
-                        <Link className="btn btn-secondary m-3" to={`/edit/${id}`}>Edit</Link>
-                        <button className="btn btn-secondary" onClick={removeListing}>Delete</button>
-                    </div>
-                    :
-                    null
-                }
             </div>
 
         return (

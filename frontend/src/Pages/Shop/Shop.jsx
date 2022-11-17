@@ -33,7 +33,7 @@ const Shop = ({ listings, onFilterSelected }) => {
                                         alt={listing.image}
                                     />
 
-                                    <div className="listing-details" style={{ fontWeight: 700 }}>
+                                    <div className="listing-details fw-bold">
                                         <div className="listing-name">
                                             {listing.name}
                                         </div>
@@ -45,7 +45,7 @@ const Shop = ({ listings, onFilterSelected }) => {
                                     <div className="listing-description">
                                         {listing.description}
                                     </div>
-                                    
+
                                     <div className="listing-price">
                                         ${listing.price}
                                     </div>

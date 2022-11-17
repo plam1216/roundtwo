@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import NewListing from '../Components/NewListing/NewListing.jsx'
+import NewListing from '../../Components/NewListing/NewListing.jsx'
 
 const Sell = ({ createListing }) => {
   const [formData, setFormData] = useState({
@@ -37,8 +37,8 @@ const Sell = ({ createListing }) => {
   }
 
   return (
-    <div className="container">
-      <h1>Sell an Item</h1>
+    <div className="container-fluid">
+      <h1 className="text-center">Sell an Item</h1>
       <NewListing
         handleChange={handleChange}
         handleSubmit={handleSubmit}
