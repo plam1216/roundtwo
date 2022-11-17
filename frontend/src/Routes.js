@@ -36,7 +36,7 @@ const Routes = () => {
     }
 
     // const URL = "http://localhost:4000/listings/"
-    const URL = "https://roundtwo-backend.onrender.com//listings/"
+    const URL = "https://roundtwo-backend.onrender.com/listings"
 
     const getListings = async () => {
         const response = await fetch(URL)
