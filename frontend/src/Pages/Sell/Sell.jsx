@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import NewListing from '../../Components/NewListing/NewListing.jsx'
+import {useHistory} from 'react-router-dom'
 
 const Sell = ({ createListing }) => {
+  const history = useHistory()
+
   const [formData, setFormData] = useState({
     name: "",
     size: "",
@@ -33,7 +36,8 @@ const Sell = ({ createListing }) => {
     })
 
     // redirects user to homepage after new listing is added to database
-    window.location = '/'
+    // window.location = '/'
+    history.push('/')
   }
 
   return (
