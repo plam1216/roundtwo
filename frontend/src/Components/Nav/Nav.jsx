@@ -43,7 +43,8 @@ const Nav = ({ user }) => {
               </li>
             }
             {user ?
-              <img id="user-pic" src={user.photoURL} alt={user.displayName} />
+              <img id="user-pic" src="https://imgur.com/kMjKBvb.jpg" alt={user.displayName} />
+              // <img id="user-pic" src={user.pfp} alt={user.displayName} />
               :
               null
             }
