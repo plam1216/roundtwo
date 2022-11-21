@@ -52,8 +52,32 @@
     width: 40px;
 }
 
-// .detail-img {
-//     width: 480px;
-//     height: 640px;
-//     object-fit: contain;
-// }
+@media only screen and (min-width: 1024px) {
+    .detail-listing {
+        width: 450px;
+        margin: auto;
+    }
+
+    .detail-img {
+        width: 390px;
+        height: 520px;
+        object-fit: contain;
+    }
+
+    .detail-name, .detail-size, .detail-price {
+        font-size: 1.2rem;
+    }
+
+    .detail-description {
+        font-size: 1.1rem;
+    }
+    
+    .seller-info {
+        font-size: 1.1rem;
+    }
+    
+    .seller-info>div>img {
+        height: 45px;
+        width: 45px;
+    }
+}
