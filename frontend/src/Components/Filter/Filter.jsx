@@ -15,6 +15,7 @@ const Filter = ({ handleChange, handleSubmit }) => {
                             onChange={handleChange}
                             className="form-select form-select-sm"
                             aria-label=".form-select-sm example"
+                            name="size"
                         >
                             <option value="All">All</option>
                             <option value="S">S</option>
@@ -24,8 +25,20 @@ const Filter = ({ handleChange, handleSubmit }) => {
                         </select>
                     </div>
 
-                    <div className="col-2">
+                    <div className="col-3">
+                        <select
+                            onChange={handleChange}
+                            className="form-select form-select-sm"
+                            aria-label=".form-select-sm example"
+                            name="price"
+                        >
+                            <option value="Default">Default</option>
+                            <option value="PA">Price Ascending</option>
+                            <option value="PD">Price Descending</option>
+                        </select>
+                    </div>
 
+                    <div className="col-2">
                         <button
                             className="btn btn-sm btn-secondary"
                             type="submit"

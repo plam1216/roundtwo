@@ -3,18 +3,21 @@ import { Link } from 'react-router-dom'
 
 import Filter from '../../Components/Filter/Filter.jsx'
 
-const Shop = ({ listings, onFilterSelected }) => {
-    const [size, setSize] = useState(null)
+const Shop = ({ listings, onFilterSelected, priceFilter }) => {
+    const [filter, setFilter] = useState({
+        size: "All",
+        price: "Default"
+    })
+
+    // console.log(filter)
 
     const handleChange = (event) => {
-        setSize(event.target.value)
-        console.log(size)
+        setFilter({ ...filter, [event.target.name]: event.target.value })
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        onFilterSelected(size)
-
+        onFilterSelected(filter)
     }
 
     // loaded : loading

@@ -18,20 +18,39 @@ const Routes = () => {
     // state for updated listings
     const [filteredListings, setFilteredListings] = useState(listings)
     // console.log("listings", listings)
-    // console.log("filtered", filteredListings)
+    console.log("filtered", filteredListings)
 
     const [user, setUser] = useState(null)
 
-    const onFilterSelected = (filterSize) => {
-        // console.log(filterSize)
-        if (filterSize === "All") {
-            setFilteredListings(listings)
+    const onFilterSelected = (filter) => {
+        if (filter.size === "All") {
+            if (filter.price === "Default") {
+                setFilteredListings(listings)
+            }
+
+            if (filter.price === "PA") {
+                let priceFilter = [...listings].sort((a, b) => a.price - b.price)
+                setFilteredListings(priceFilter)
+            }
+
+            if (filter.price === "PD") {
+                let priceFilter = [...listings].sort((a, b) => b.price - a.price)
+                setFilteredListings(priceFilter)
+            }
         } else {
-            let filter = listings.filter(listing => {
-                return listing.size === filterSize
-            })
-            // console.log("filter", filter)
-            setFilteredListings(filter)
+            // filter by size
+            let filteredItems = listings.filter(listing => listing.size === filter.size)
+
+            // sort by price using size-filtered array
+            if (filter.price === "PA") {
+                filteredItems = [...filteredItems].sort((a, b) => a.price - b.price)
+            }
+
+            if (filter.price === "PD") {
+                filteredItems = [...filteredItems].sort((a, b) => b.price - a.price)
+            }
+            
+            setFilteredListings(filteredItems)
         }
     }
 
@@ -53,7 +72,7 @@ const Routes = () => {
     // define function that uses API call to create listings
     const createListing = async (formData) => {
         const token = await user.getIdToken();
-        console.log(token)
+        // console.log(token)
 
         await fetch(URL, {
             method: "POST",
@@ -141,7 +160,8 @@ const Routes = () => {
                 </Route>
                 <Route exact path='/sell'>
                     <Sell
-                        createListing={createListing} />
+                        createListing={createListing}
+                    />
                 </Route>
             </Switch>
         </>
