@@ -71,13 +71,20 @@ const ListingDetails = (props) => {
                     <div className="purchase text-center mt-5">
                         <button className="btn btn-lg btn-dark">Purchase</button>
                     </div>
-                    
-                    {/* only show edit & delete if logged in user's email matches listing seller's email */}
-                    {props.user.email === listing.email ?
-                        <div className="text-center mt-4">
-                            <Link className="btn btn-secondary m-1" to={`/edit/${id}`}>Edit</Link>
-                            <button className="btn btn-secondary m-1" onClick={removeListing}>Delete</button>
-                        </div>
+
+                    {/* if a user exists (they are logged in) */}
+                    {/* check if the logged in user's email matches the listing's seller's email */}
+                    {/* if it does then give them to option to edit & delete the listing */}
+                    {/* else render nothing */}
+                    {props.user ?
+                        props.user.email === listing.email ?
+                            <div className="text-center mt-4">
+                                <Link className="btn btn-secondary m-1" to={`/edit/${id}`}>Edit</Link>
+                                <button className="btn btn-secondary m-1" onClick={removeListing}>Delete</button>
+                            </div>
+                            :
+                            null
+
                         :
                         null
                     }
