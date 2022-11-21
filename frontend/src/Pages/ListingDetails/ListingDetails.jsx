@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const ListingDetails = (props) => {
-    // console.log(props.user)
+    // console.log("ListingDetails, props: ", props)
 
     const loaded = () => {
         const id = props.match.params.id
         const listings = props.listings
 
         const listing = listings.find(l => l._id === id)
-        // console.log(listing)
+        // console.log("ListingDetails, listing: ", listing)
 
         const removeListing = () => {
             // prompt user to confirm if they want to delete listing
@@ -52,26 +52,31 @@ const ListingDetails = (props) => {
                             ${listing.price}
                         </div>
 
-                        {/* <div className="mt-4 mb-0 fw-bold">
+                        <div className="mt-4 mb-0 fw-bold" style={{ fontSize: "1.2rem" }}>
                             Seller:
                         </div>
 
                         <div className="seller-info">
                             <div>
-                                {props.user.displayName}
+                                {listing.username}
                                 <br />
-                                {props.user.email}
+                                {listing.email}
                             </div>
                             <div>
-                                <img src={props.user.photoURL} alt="user-pfp" />
+                                <img src={listing.pfp} alt="user-pfp" />
                             </div>
-                        </div> */}
+                        </div>
                     </div>
 
-                    {props.user ?
+                    <div className="purchase text-center mt-5">
+                        <button className="btn btn-lg btn-dark">Purchase</button>
+                    </div>
+                    
+                    {/* only show edit & delete if logged in user's email matches listing seller's email */}
+                    {props.user.email === listing.email ?
                         <div className="text-center mt-4">
-                            <Link className="btn btn-secondary m-3" to={`/edit/${id}`}>Edit</Link>
-                            <button className="btn btn-secondary" onClick={removeListing}>Delete</button>
+                            <Link className="btn btn-secondary m-1" to={`/edit/${id}`}>Edit</Link>
+                            <button className="btn btn-secondary m-1" onClick={removeListing}>Delete</button>
                         </div>
                         :
                         null
