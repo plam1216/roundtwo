@@ -5,7 +5,11 @@ const listingSchema = new mongoose.Schema({
     size: { type: String, required: true },
     price: { type: Number, required: true, min: 1 },
     description: String,
-    image: { type: String, required: true }
+    image: { type: String, required: true },
+    userId: String,
+    email: String,
+    username: String,
+    pfp: String,
 }, {
     timestamps: true
 })
